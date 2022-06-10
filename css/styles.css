@@ -18,6 +18,8 @@
   --sicial-med-clr-bcg: #2196f3;
   --clients-clr-icon: #afb1b8;
   --clients-clr-hover: #2196f3;
+
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 p,
@@ -82,13 +84,6 @@ body {
   margin: -1px;
 }
 
-:hover {
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 /* -----HEADER----- */
 
 .header {
@@ -139,6 +134,7 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
+  transition: color 250ms var(--timing-function);
 }
 
 .header-link.current::after {
@@ -178,13 +174,14 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--primery-text-color);
+  transition: color 250ms var(--timing-function);
 }
 
 .header-link:hover,
 .header-link:focus,
 .header-mail:hover,
-.header-tel:hover,
 .header-mail:focus,
+.header-tel:hover,
 .header-tel:focus {
   color: var(--color-accent);
 }
@@ -192,18 +189,19 @@ body {
 .icon-mail {
   margin-right: 10px;
   fill: var(--primery-text-color);
+  transition: fill 250ms var(--timing-function);
 }
 
 .icon-tel {
   margin-right: 10px;
   fill: var(--primery-text-color);
+  transition: fill 250ms var(--timing-function);
 }
 
 .header-mail:hover .icon-mail,
 .header-tel:hover .icon-tel,
 .header-mail:focus .icon-mail,
 .header-tel:focus .icon-tel {
-  color: var(--color-accent);
   fill: var(--color-accent);
 }
 
@@ -255,6 +253,7 @@ body {
   background-color: var(--color-accent);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border: none;
+  transition: background-color 250ms var(--timing-function);
 }
 
 .hero-button:hover,
@@ -433,6 +432,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 250ms var(--timing-function);
 }
 
 .social-media-item:not(:last-child) {
@@ -441,6 +441,7 @@ body {
 
 .social-media-icon {
   fill: var(--social-med-clr-primery);
+  transition: fill 250ms var(--timing-function);
 }
 
 .social-media-link:hover,
@@ -485,6 +486,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 250ms var(--timing-function),
+    border 250ms var(--timing-function);
 }
 
 .clients-icon {
@@ -538,6 +541,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--third-text-color);
+  transition: color 250ms var(--timing-function);
 }
 
 .footer-mail,
@@ -547,6 +551,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--footer-contacts-color);
+  transition: color 250ms var(--timing-function);
 }
 
 .footer-map-address:hover,
@@ -556,7 +561,6 @@ body {
 .footer-tel:hover,
 .footer-tel:focus {
   color: var(--color-accent);
-  outline: none;
 }
 
 .social-footer {
@@ -598,6 +602,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 250ms var(--timing-function);
 }
 
 .social-footer-icon {
@@ -607,7 +612,55 @@ body {
 .social-footer-link:hover,
 .social-footer-link:focus {
   background-color: var(--sicial-med-clr-bcg);
-  outline: none;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  opacity: 1;
+  transition: opacity 300ms var(--timing-function);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.1);
+}
+
+.modal {
+  width: 528px;
+  min-height: 581px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 300ms var(--timing-function);
+}
+
+.modal-close-btn {
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-hidden {
+  visibility: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* -----Portfolio.html page----- */
@@ -640,6 +693,9 @@ body {
   background-color: var(--bcg-color-items);
   border: none;
   cursor: pointer;
+  transition: color 250ms var(--timing-function),
+    background-color 250ms var(--timing-function),
+    box-shadow 250ms var(--timing-function);
 }
 
 .work-filters-btn:hover,
@@ -668,6 +724,7 @@ body {
 
 .work-link {
   display: block;
+  transition: box-shadow 250ms var(--timing-function);
 }
 
 .work-link:hover,
