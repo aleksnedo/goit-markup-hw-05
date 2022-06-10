@@ -13,6 +13,7 @@
   --bcg-color-team-card: #ffffff;
   --bcg-color-work-card: #ffffff;
   --bcg-color-features-icon: #f5f4fa;
+  --bcg-color-work-desc: rgba(33, 150, 243, 0.9);
   --social-med-clr-primery: #afb1b8;
   --social-med-clr-hover: #ffffff;
   --sicial-med-clr-bcg: #2196f3;
@@ -110,7 +111,13 @@ body {
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
+  transition: text-shadow 100ms var(--timing-function);
 }
+
+.logo:active {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .logo-accent {
   color: var(--color-accent);
 }
@@ -134,7 +141,12 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
-  transition: color 250ms var(--timing-function);
+  transition: color 250ms var(--timing-function),
+    transform 100ms var(--timing-function);
+}
+
+.header-link:active {
+  transform: scale(0.9);
 }
 
 .header-link.current::after {
@@ -174,7 +186,13 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--primery-text-color);
-  transition: color 250ms var(--timing-function);
+  transition: color 250ms var(--timing-function),
+    transform 100ms var(--timing-function);
+}
+
+.header-mail:active,
+.header-tel:active {
+  transform: scale(0.9);
 }
 
 .header-link:hover,
@@ -253,7 +271,12 @@ body {
   background-color: var(--color-accent);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border: none;
-  transition: background-color 250ms var(--timing-function);
+  transition: background-color 250ms var(--timing-function),
+    transform 100ms var(--timing-function);
+}
+
+.hero-button:active {
+  transform: scale(0.9);
 }
 
 .hero-button:hover,
@@ -432,7 +455,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 250ms var(--timing-function);
+  transition: background-color 250ms var(--timing-function),
+    transform 100ms var(--timing-function);
+}
+
+.social-media-link:active {
+  transform: scale(1.1);
 }
 
 .social-media-item:not(:last-child) {
@@ -487,7 +515,11 @@ body {
   align-items: center;
   justify-content: center;
   transition: color 250ms var(--timing-function),
-    border 250ms var(--timing-function);
+    border 250ms var(--timing-function), transform 100ms var(--timing-function);
+}
+
+.clients-link:active {
+  transform: scale(0.9);
 }
 
 .clients-icon {
@@ -536,6 +568,7 @@ body {
 }
 
 .footer-map-address {
+  position: relative;
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
@@ -546,12 +579,21 @@ body {
 
 .footer-mail,
 .footer-tel {
+  position: relative;
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--footer-contacts-color);
   transition: color 250ms var(--timing-function);
+}
+
+.footer-item {
+  transition: transform 100ms var(--timing-function);
+}
+
+.footer-item:active {
+  transform: scale(0.9);
 }
 
 .footer-map-address:hover,
@@ -602,7 +644,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 250ms var(--timing-function);
+  transition: background-color 250ms var(--timing-function),
+    transform 100ms var(--timing-function);
+}
+
+.social-footer-link:active {
+  transform: scale(1.1);
 }
 
 .social-footer-icon {
@@ -655,6 +702,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 150ms var(--timing-function);
+}
+
+.modal-close-btn:active {
+  transform: scale(0.9);
 }
 
 .is-hidden {
@@ -695,7 +747,8 @@ body {
   cursor: pointer;
   transition: color 250ms var(--timing-function),
     background-color 250ms var(--timing-function),
-    box-shadow 250ms var(--timing-function);
+    box-shadow 250ms var(--timing-function),
+    transform 100ms var(--timing-function);
 }
 
 .work-filters-btn:hover,
@@ -705,6 +758,10 @@ body {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
   outline: none;
+}
+
+.work-filters-btn:active {
+  transform: scale(0.9);
 }
 
 /* ---СЕТКА--- */
@@ -724,13 +781,45 @@ body {
 
 .work-link {
   display: block;
-  transition: box-shadow 250ms var(--timing-function);
+  transition: box-shadow 250ms var(--timing-function),
+    transform 100ms var(--timing-function);
+}
+
+.work-link:active {
+  transform: scale(0.9);
 }
 
 .work-link:hover,
 .work-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  outline: none;
+}
+
+.work-link:hover .work-description,
+.work-link:focus .work-description {
+  transform: translateY(0);
+}
+
+.work-top-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.work-description {
+  position: absolute;
+  top: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+  padding: 63px 24px;
+  height: 100%;
+  color: var(--third-text-color);
+  background-color: var(--bcg-color-work-desc);
+  transform: translateY(100%);
+  transition: transform 250ms var(--timing-function);
 }
 
 .work-content {
